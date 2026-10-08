@@ -6,8 +6,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         GameDashBoard gameObj=new GameDashBoard(sc);
-        // gameObj.dashBoard();
-        gameObj.startGame();
+         gameObj.dashBoard();
+    //    gameObj.startGame();
 
     }
     
