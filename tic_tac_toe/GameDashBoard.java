@@ -2,6 +2,7 @@ package tic_tac_toe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class GameDashBoard
@@ -16,59 +17,19 @@ public class GameDashBoard
 
 
     }
-    public void calculateWinner(ArrayList <Integer>storedArrayList,ArrayList userChoices)
-    {
-
-        ArrayList <Integer>winner=new ArrayList<>();
-        storedArrayList.sort(null);
-        System.out.println(storedArrayList);
-        int arr[]=new int[5];
-        int i=0;
-        for(int choices:storedArrayList)
-        {
-            arr[i]=choices;
-            i++;
-            
-            
-            
-            
-            
-
-        }
-        for(int k=0;k<4;k++)
-        {
-            System.out.println(arr[k]);
-        }
-        int count=1;
-       for(int j=0;j<4;j++)
-       {
-        if((arr[j+1]-arr[j])==1)
-        {
-            if(count==3)
-            {
-                System.out.println("winner");
-                break;
-            }
-            winner.add(arr[j]);
-            
-
-        }
-        count++;
-        System.out.println(winner);
-       }
-
-        
-
-    }
+   
     public void startGame()
     {
-        
-        ArrayList <Integer>horizontal=new ArrayList<>();
+        int draw=0;
+
+   
+        HashSet<Integer>vertical_user=new HashSet<>();
+         HashSet<Integer>vertical_friend=new HashSet<>();
        
         String fetchedSymbol=null;
         //String value=h.get(userName);
         String value=null;
-        int vertical_winner=0;
+        int verticalWinner=0;
       
     ArrayList<Integer>userChoices=new ArrayList<>();
      ArrayList<Integer>storeduserChoices=new ArrayList<>();
@@ -80,36 +41,64 @@ public class GameDashBoard
           int var=1;
           while(true)
             {
+                draw++;
                 
                 int val=0;
                  int count=1;
               
-               
-     
+               int fetchedValue=3,fetchedValue2=3;
+     int flag=0;
             for (int i=1;i<=3;i++)
 
 {
     int horizontal_Winner1=0;
     int horizontal_Winner2=0;
+
     
     for (int j=1;j<=3;j++)
     {
+        
+      
             
       
-        System.out.println("count1: "+count);
+       
             if(storeduserChoices.contains(count))
             {
-                System.out.println("coutn2:"+count);
-                if(count%3==0)
+              
+                try
                 {
-                    vertical_winner++;
-                    System.out.println("vertical: "+vertical_winner+"count: "+count);
-                }
+                 fetchedValue=storeduserChoices.get(val++);
 
+                
+                }
+                catch(Exception e)
+                {
+                }
+                
+                    if(fetchedValue%3==0)
+                 {
+                
+                    vertical_user.add(fetchedValue);
+                    
+                    
+                 
+                  
+                 } else if((storeduserChoices.contains(2)&&storeduserChoices.contains(5)&&storeduserChoices.contains(8))||(storeduserChoices.contains(1)&&storeduserChoices.contains(4)&&storeduserChoices.contains(7)))
+                 {
+                    flag=1;
+                  
+
+                    
+
+                  
+                 }else if ((storeduserChoices.contains(1)&&storeduserChoices.contains(5)&&storeduserChoices.contains(9))||(storeduserChoices.contains(3)&&storeduserChoices.contains(5)&&storeduserChoices.contains(7)))
+                 {
+                   flag=1;
+                 }
+                
+       
                 value=h.get(userName);
-                // count++;
-                System.out.println("count: "+count);
-               
+                            
                 
    System.out.print(" " + value + " ");
    horizontal_Winner1++;
@@ -118,6 +107,34 @@ public class GameDashBoard
   
             }else if(userChoices.contains(count)) 
             {
+                 try
+                {
+                   
+                 fetchedValue2=userChoices.get(val++);
+
+             }
+                catch(Exception e)
+                {
+                }
+                    if(fetchedValue2%3==0)
+                 {
+                
+                    
+                    vertical_friend.add(fetchedValue2);
+                
+                 }else if((userChoices.contains(2)&&userChoices.contains(5)&&userChoices.contains(8))||(userChoices.contains(1)&&userChoices.contains(4)&&userChoices.contains(7)))
+                 {
+                  
+                  flag=2;
+
+                    
+
+                  
+                 }else if ((userChoices.contains(1)&&userChoices.contains(5)&&userChoices.contains(9))||(userChoices.contains(3)&&userChoices.contains(5)&&userChoices.contains(7)))
+                 {
+                    flag=2;
+                 }
+
                           value=h.get(friendName);
    System.out.print(" " + value + " ");
    horizontal_Winner2++;
@@ -138,7 +155,9 @@ public class GameDashBoard
         }
        
 
+        
         count++;
+      
      
       
     }
@@ -149,12 +168,41 @@ public class GameDashBoard
     {
         System.out.println("\n---+---+---");
     }
-    if(horizontal_Winner1==3||horizontal_Winner2==3)
+    if(horizontal_Winner1==3)
     {
-System.out.println("Yash is Winner");
+       flag=1;
+    }else if(vertical_user.size()==3)
+    {
+    
+    flag=1;   
+    }else if(vertical_friend.size()==3)
+    {
+        flag=2;
+    }else if(horizontal_Winner2==3)
+    {
+        flag=2;
     }
     
  
+}
+if(flag==1)
+{
+    System.out.println("\n\t\t------------------------");
+    System.out.println("\t\t"+userName+" is the Winner");
+       System.out.println("\n\t\t------------------------");
+    return ;
+    
+}else if(flag==2)
+{
+       System.out.println("\n\t\t------------------------");
+    System.out.println("\t\t"+userName+" is the Winner");
+       System.out.println("\n\t\t------------------------");
+return ;
+}else if(draw==9)
+{
+    System.out.println("\n\t\t------------");
+    System.out.println("\t\tGame Drawn");
+    System.out.println("\t\t------------");
 }
              if(counter%2==0)
             {
@@ -162,25 +210,30 @@ System.out.println("Yash is Winner");
                
               
 
-                  System.out.print("\n\nRahul your choice: ");
+                  System.out.print("\n\n"+friendName+" your choice: ");
                 
          
             try {
                 choice=sc.nextInt();
-                  System.err.println();
+                  
                 if(choice<=9&&choice>0)
                 {
-                userChoices.add(choice);
-                }
-                else if(userChoices.contains(choice))
+               
+                
+                 if(userChoices.contains(choice)||storeduserChoices.contains(choice))
                     {
                         System.out.println("Already Selected");
                         userChoices.remove(choice);
                         continue;
 
                     }else 
-                {
+                    {
+                         userChoices.add(choice);
+                    }
+                }else 
+                    {
                     System.out.println("Invalid choice");
+                
                     continue;
                 }
                 
@@ -200,21 +253,26 @@ System.out.println("Yash is Winner");
 
 
  
-            System.out.print("\n\nYash your choice: ");
+            System.out.print("\n\n"+userName+" your choice: ");
          
             try {
                 choice=sc.nextInt();
-                  System.err.println();
+                  
                 if(choice<=9&&choice>0)
                 {
                // userChoices.add(choice);
-                storeduserChoices.add(choice);
-                }else if(storeduserChoices.contains(choice))
+               
+                 if(storeduserChoices.contains(choice)||userChoices.contains(choice))
                 {
                     System.out.println("Already Selecetd");
                     storeduserChoices.remove(choice);
                     continue;
+                }else 
+                {
+                     storeduserChoices.add(choice);
                 }
+                System.out.println("stored: "+storeduserChoices);
+            }
                 else 
                 {
                     System.out.println("Invalid choice");
@@ -335,6 +393,7 @@ System.out.println("Yash is Winner");
             System.out.println();
         } catch (Exception e) {
         System.out.println("Invalid option no.");
+        sc.nextLine();
         continue;
         }
         if(choice==1)
@@ -368,6 +427,7 @@ System.out.println("Yash is Winner");
             ch=sc.nextInt();
         } catch (Exception e) {
             System.out.println("Invalid option no.");
+            sc.nextLine();
             continue;
         }
         if(ch==1)
