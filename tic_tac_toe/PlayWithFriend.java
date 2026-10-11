@@ -5,13 +5,14 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
 
-public class GameDashBoard
+public class PlayWithFriend
 {
+        int choice=0;
     
           HashMap <String ,String>h=new HashMap<>();
     Scanner sc;
        String userName=null,friendName=null;
-    public GameDashBoard(Scanner sc)
+    public PlayWithFriend(Scanner sc)
     {
         this.sc=sc;
 
@@ -198,7 +199,7 @@ if(flag==1)
     System.out.println("\t\t"+userName+" is the Winner");
        System.out.println("\n\t\t------------------------");
 return ;
-}else if(draw==9)
+}else if(draw==10)
 {
     System.out.println("\n\t\t------------");
     System.out.println("\t\tGame Drawn");
@@ -387,7 +388,7 @@ return ;
         while(true)
         {
         System.out.println("1.Ready    2.Exit");
-        int choice=0;
+    
         try {
             choice=sc.nextInt();
             System.out.println();
@@ -412,6 +413,10 @@ return ;
             
             
         
+    }else if(ch==2)
+    {
+        PlayWithComp p=new PlayWithComp(sc);
+        p.registerPlayer();
     }
     }
     }
