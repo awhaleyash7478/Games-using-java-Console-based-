@@ -8,39 +8,109 @@ import java.util.stream.Gatherer.Integrator;
 
 public class PlayWithComp
 {
+
       HashMap<String,String>h=new HashMap<>();
         int symbol1=0;
     Scanner sc;
+     
     public PlayWithComp(Scanner sc)
     {
+         
+    
         this.sc=sc;
     }
     String userName=null;
      String value=null;
-    
+     int val=0;
+
+    public int compCombination1(ArrayList comb1)
+
+    {
+        System.out.println(comb1);
+        int choice=0;
+        System.out.println("val: "+val);
+        try 
+        {
+         choice=(int)comb1.get(val);
+
+       
+        }catch(Exception e){}
+        try 
+        {
+            System.out.println("choice: "+choice);
+         comb1.remove(val);
+        }catch(Exception e){}
+        System.out.println("after :"+comb1);
+         
+        val++;
+
+        return choice;
+
+        
+
+      
+
+    }
     public void startGame()
     {
+        ArrayList <Integer>comb1=new ArrayList<>();
+        System.out.println("hey ");
+        
+             comb1.add(1);
+             comb1.add(7);
+             comb1.add(9);
+   
+         ArrayList<Integer>compChoices=new ArrayList<>();
+        ArrayList <Integer>storedUserChoices=new ArrayList<>();
+          
+        
+        int firstChance=0;
+         int counter=0;
+        int chance=0;
+        // Random r1=new Random();
+        // chance=r1.nextInt(4)+1;
+        chance=2;
+        System.out.println("chance: "+chance);
+        if(chance%2==0)
+        {
+            firstChance=1;
+            counter=2;
+        }else 
+        {
+            counter=1;
+        }
         int choice=0;
-        int counter=1;
+       
         while(true)
         {
-        ArrayList<Integer>userChoices=new ArrayList<>();
-        ArrayList <Integer>storeduserChoices=new ArrayList<>();
+       
         int count=1;
+        // System.out.println("hey entered");
+        // System.out.println("count:"+count);
+        // System.out.println("compchoices: "+compChoices);
+        System.out.println("\n");
         for(int i=1;i<=3;i++)
         {
             for(int j=1;j<=3;j++)
             {
-                if(storeduserChoices.contains(count))
+                if(storedUserChoices.contains(count))
                 {
+                    // System.out.println("storedchoices");
                      value=h.get(userName);
                       System.out.print(" " + value + " ");
                     
 
-                }else 
+                }else if(compChoices.contains(count)) 
                 {
-                    System.out.print(" " + count + " ");  
+                    // System.out.println("entered in  compchoices");
+                    value=h.get("Computer");
+                    // System.out.println("value: "+value);
+                     System.out.print(" " + value + " ");
+                    
 
+                }else
+                {
+                    System.out.print(" " + count + " ");
                 }
                 
         if (j<3)
@@ -62,7 +132,22 @@ public class PlayWithComp
         }
         if(counter%2==0)
         {
-            Random compChoice=new Random(1-9);
+            System.out.println("computer choice");
+            if(firstChance==1)
+            {
+                 choice=compCombination1(comb1);
+                 compChoices.add(choice);
+                 //System.out.println(compChoices);
+                 //System.out.println("choice return: "+choice);
+                         
+
+            }
+            
+            // Random compChoice=new Random();
+            // choice=compChoice.nextInt(9)+1;
+            // System.out.println("choice: "+choice);
+             counter++;
+            continue;
             
             
         }
@@ -77,18 +162,18 @@ public class PlayWithComp
                   
                 if(choice<=9&&choice>0)
                 {
-               // userChoices.add(choice);
+               // compChoices.add(choice);
                
-                 if(storeduserChoices.contains(choice)||userChoices.contains(choice))
+                 if(storedUserChoices.contains(choice)||compChoices.contains(choice))
                 {
                     System.out.println("Already Selecetd");
-                    storeduserChoices.remove(choice);
+                    storedUserChoices.remove(choice);
                     continue;
                 }else 
                 {
-                     storeduserChoices.add(choice);
+                     storedUserChoices.add(choice);
                 }
-                System.out.println("stored: "+storeduserChoices);
+                System.out.println("stored: "+storedUserChoices);
             }
                 else 
                 {
