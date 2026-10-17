@@ -21,128 +21,98 @@ public class PlayWithComp
     String userName=null;
      String value=null;
 
-    public int compResponse()
+    public int compResponse(ArrayList<Integer> storedUserChoices)
     {
         int horizontalCount=3;
-     ArrayList <Integer>storedUserChoices=new ArrayList<>();
-       storedUserChoices.add(2);
-       storedUserChoices.add(3);
-       System.out.println(storedUserChoices);       //storeduserchoices.add(3);
-    
-    //     storedUserChoices.sort(null);
-    //     int val1=(int)storedUserChoices.get(0);
-    //     int val2=(int)storedUserChoices.get(1);
-    //    if(val2-val1==1)
-    //    {
-
-    //    }else 
-    //    {
-    //     Random r=new Random();
-    //     int choice=r.nextInt(val2)+1;
-    //     System.out.println("choice: "+choice);
-
-    //    }
+    //  ArrayList <Integer>storedUserChoices=new ArrayList<>();
+    //    storedUserChoices.add(3);
+    //    storedUserChoices.add(4);
+      // System.out.println(storedUserChoices);       
+    int previousCount=0;
+   
     int max=(int)Collections.max(storedUserChoices);
-    System.out.println("max: "+max);
-int count=0;
+    //System.out.println("max: "+max);
+int count=3;
+int totalHorizontalSum=6;
 int sum=0;
 int flag=1;
-System.out.println(storedUserChoices);
-ArrayList<Integer>storedSums=new ArrayList<>();
+//System.out.println(storedUserChoices);
+HashSet<Integer>storedChoices=new HashSet<>();
 int result=0;
-if(storedUserChoices.contains(1)||storedUserChoices.contains(2)||storedUserChoices.contains(3))
-{
-    for(int choices:storedUserChoices)
-    {
+// if(storedUserChoices.contains(1)||storedUserChoices.contains(2)||storedUserChoices.contains(3))
+// {
+//     for(int choices:storedUserChoices)
+//     {
      
-        storedSums.add(choices);
+//         storedSums.add(choices);
         
-    }
-    int first=storedSums.get(0);
-    int second=storedSums.get(1);
-    sum=first+second;
-    System.out.println("sum:"+sum);
-     result=6-sum;
-    System.out.println("result: "+result);
-
-    
-}
-
-
-
-// for(int i=1;i<=max+1;i++)
-//     {
-//         System.out.println("i before : "+i);
-//      if(storedUserChoices.contains(i)  ||count==2)
-//      {
-       
-//         if(i<=horizontalCount)
-//         {
-//              sum=sum+i;
-//         System.out.println("sum: "+sum);
-//         count++;
-//         continue;
-//         }else 
-//         {
-//             System.out.println("doing it");
-//             horizontalCount=horizontalCount+3;
-//             System.out.println("hor: "+horizontalCount);
-            
-//         }
-//         // if(count<3)
-//         // {
-//         // count++;
-//         // System.out.println("xount: "+count);
-//         // System.out.println("i: "+i);
-//         // sum=sum+i;
-//         // System.out.println("sum: "+sum);
-//         // storedSums.add(i);
-//         // continue;
-//         // }else if(sum%3==0)
-//         // {
-//         //   System.out.println("hey i got it:sum:"+sum);
-//         //   break;
-//         // }
-//     //     while(true)
-//     //    {
-//     //     sum++;
-//     //     System.out.println("sum b: "+sum);
-//     //     if(sum%3==0)
-//     //     {
-//     //         System.out.println("flag: "+flag);
-           
-//     //         break;
-
-//     //    }else
-//     //    {
-//     //     System.out.println("sum:"+sum);
-//     //     flag++;
-//     //     continue;
-//     //    }
-
-        
-//       // }
-   
-
-//     }else if(count==2) 
-//     {
-
-
-//         break;
-//     }else 
-//     {
-//         continue;
 //     }
+//     int first=storedSums.get(0);
+//     int second=storedSums.get(1);
+//     sum=first+second;
+//     System.out.println("sum:"+sum);
+//      result=6-sum;
+//     System.out.println("result: "+result);
 
     
-    
-
-
-
 // }
 
-//  return flag;
-//     }
+for(int i=1;i<=3;i++)
+{
+  //  System.out.println("i: "+i+" "+"count: "+count+"  sum:"+totalHorizontalSum);
+    if(!storedUserChoices.isEmpty())
+    {
+        Collections.sort(storedUserChoices);
+    //    System.out.println("sorted list: "+storedUserChoices);
+        for(int ch:storedUserChoices)
+        {
+
+            if(ch<=count && ch>previousCount)
+            {
+                storedChoices.add(ch);
+                System.out.println("\n stored choices : "+storedUserChoices);
+
+            }else 
+            {
+                break;
+            }
+
+
+        }
+        System.out.println("final stored choices: "+storedChoices);
+        if(storedChoices.size()>=2)
+        {
+
+        
+        for(int ch:storedChoices)
+        {
+            sum=sum+ch;
+
+        }
+        System.out.println("sum: "+sum);
+        result=totalHorizontalSum-sum;
+        System.out.println("eureka it is: "+result);
+        break;
+    }else 
+    {
+        System.out.println("here");
+        previousCount=previousCount+3;
+
+        totalHorizontalSum=totalHorizontalSum+9;
+        count=count+3;
+        continue;
+    }
+
+
+    }
+    
+    
+}
+return result;
+
+    }
+
+
    
 
 //     public int compCombination1(ArrayList comb1,ArrayList storedUserChoices)
@@ -176,21 +146,15 @@ if(storedUserChoices.contains(1)||storedUserChoices.contains(2)||storedUserChoic
        
          
         
-       return result;
-
-        
-
       
-
-    }
     public void startGame()
     {
-        ArrayList <Integer>comb1=new ArrayList<>();
-        System.out.println("hey ");
+    //     ArrayList <Integer>comb1=new ArrayList<>();
+    //     System.out.println("hey ");
         
-             comb1.add(1);
-             comb1.add(7);
-             comb1.add(9);
+    //          comb1.add(1);
+    //          comb1.add(7);
+    //          comb1.add(9);
    
          ArrayList<Integer>compChoices=new ArrayList<>();
         ArrayList <Integer>storedUserChoices=new ArrayList<>();
@@ -212,10 +176,11 @@ if(storedUserChoices.contains(1)||storedUserChoices.contains(2)||storedUserChoic
             counter=1;
         }
         int choice=0;
-        if(storedUserChoices.size()>2)
-        {
-           //choice=  compResponse(storedUserChoices);
-        }
+        // if(!storedUserChoices.isEmpty())
+        // {
+        //     choice=compResponse(storedUserChoices);
+        //    //choice=  compResponse(storedUserChoices);
+        // }
        
         while(true)
         {
@@ -271,13 +236,17 @@ if(storedUserChoices.contains(1)||storedUserChoices.contains(2)||storedUserChoic
             System.out.println("computer choice");
             if(firstChance==1)
             {
-                System.out.println("org: "+comb1);
+                storedUserChoices.add(1);
+                choice=compResponse(storedUserChoices);
+                System.out.println("choice: "+choice);
+                compChoices.add(choice);
+               // System.out.println("org: "+comb1);
                //  choice=compCombination1(comb1,storedUserChoices);
                 // System.out.println("choice before add: "+choice);
-                 compChoices.add(choice);
+                //  compChoices.add(choice);
 
-                 System.out.println("return back");
-                 System.out.println("choice return: "+choice);
+                //  System.out.println("return back");
+                //  System.out.println("choice return: "+choice);
                          
 
             }
@@ -287,11 +256,12 @@ if(storedUserChoices.contains(1)||storedUserChoices.contains(2)||storedUserChoic
             // System.out.println("choice: "+choice);
             try 
             {
-            comb1.remove(0);
+         //   comb1.remove(0);
             }catch(Exception e)
             {} 
-            System.out.println("after removal: "+comb1);
+           // System.out.println("after removal: "+comb1);
             counter++;
+            System.out.println("continuing");
             continue;
             
             
@@ -399,8 +369,7 @@ if(storedUserChoices.contains(1)||storedUserChoices.contains(2)||storedUserChoic
         }
         if(choice==1)
         {
-           
-        compResponse();
+       startGame();
         }else if(choice==2)
         {
             return ;
