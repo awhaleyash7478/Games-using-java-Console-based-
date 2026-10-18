@@ -6,6 +6,10 @@ import java.util.stream.Gatherer.Integrator;
 
 public class PlayWithComp
 {
+    HashSet<Integer>duplicateChoices=new HashSet<>();
+  
+      ArrayList <Integer>storedUserChoices=new ArrayList<>();
+        HashSet<Integer>storedChoices=new HashSet<>();
     
 
       HashMap<String,String>h=new HashMap<>();
@@ -21,8 +25,10 @@ public class PlayWithComp
     String userName=null;
      String value=null;
 
-    public int compResponse(ArrayList<Integer> storedUserChoices)
+    public int compResponse()//ArrayList<Integer> storedUserChoices)
     {
+        
+
         int horizontalCount=3;
     //  ArrayList <Integer>storedUserChoices=new ArrayList<>();
     //    storedUserChoices.add(3);
@@ -30,14 +36,14 @@ public class PlayWithComp
       // System.out.println(storedUserChoices);       
     int previousCount=0;
    
-    int max=(int)Collections.max(storedUserChoices);
+    //int max=(int)Collections.max(storedUserChoices);
     //System.out.println("max: "+max);
 int count=3;
 int totalHorizontalSum=6;
 int sum=0;
 int flag=1;
 //System.out.println(storedUserChoices);
-HashSet<Integer>storedChoices=new HashSet<>();
+
 int result=0;
 // if(storedUserChoices.contains(1)||storedUserChoices.contains(2)||storedUserChoices.contains(3))
 // {
@@ -59,22 +65,52 @@ int result=0;
 
 for(int i=1;i<=3;i++)
 {
-  //  System.out.println("i: "+i+" "+"count: "+count+"  sum:"+totalHorizontalSum);
+    System.out.println("previous count: "+previousCount);
+   System.out.println("i: "+i+" "+"count: "+count+"  sum:"+totalHorizontalSum);
     if(!storedUserChoices.isEmpty())
     {
         Collections.sort(storedUserChoices);
-    //    System.out.println("sorted list: "+storedUserChoices);
+      System.out.println("sorted list: "+storedUserChoices);
         for(int ch:storedUserChoices)
         {
+           System.out.println("ch: "+ch);
 
-            if(ch<=count && ch>previousCount)
+           
+            if(ch<=count && ch>=previousCount )
             {
-                storedChoices.add(ch);
-                System.out.println("\n stored choices : "+storedUserChoices);
+                 if(duplicateChoices.contains(ch))
+                 {
+                    System.out.println("dupicate|: "+duplicateChoices);
+                    System.out.println("hey contains the duplicate hence not entered");
+                    continue;
+                 }else 
+                 {
+                    System.out.println("hey");
+                       System.out.println("stored  choices: "+storedChoices);
+                            storedChoices.add(ch);
+                              duplicateChoices.add(ch);
+   System.out.println("stored  choices: "+storedChoices);
+                 }
+                
+                   
+                //    System.out.println("stored choices: "+storedChoices);
+              
+                      
+                   
+                      
+                
+                    // }  
+
+                
+                //   System.out.println("duplicate list: "+duplicateChoices);
+              
+                // System.out.println("\n stored choices : "+storedChoices);
 
             }else 
             {
-                break;
+               // break;
+               System.out.println("phirse");
+               continue;
             }
 
 
@@ -92,6 +128,11 @@ for(int i=1;i<=3;i++)
         System.out.println("sum: "+sum);
         result=totalHorizontalSum-sum;
         System.out.println("eureka it is: "+result);
+        System.out.println("duplicate choices: "+duplicateChoices);
+        System.out.println("stored choices: "+storedChoices);
+        storedChoices.removeAll(duplicateChoices);
+        System.out.println("after removal: "+storedChoices);
+
         break;
     }else 
     {
@@ -157,7 +198,7 @@ return result;
     //          comb1.add(9);
    
          ArrayList<Integer>compChoices=new ArrayList<>();
-        ArrayList <Integer>storedUserChoices=new ArrayList<>();
+      
           
         
         int firstChance=0;
@@ -236,8 +277,8 @@ return result;
             System.out.println("computer choice");
             if(firstChance==1)
             {
-                storedUserChoices.add(1);
-                choice=compResponse(storedUserChoices);
+                //storedUserChoices.add(1);
+                choice=compResponse();//storedUserChoices);
                 System.out.println("choice: "+choice);
                 compChoices.add(choice);
                // System.out.println("org: "+comb1);
