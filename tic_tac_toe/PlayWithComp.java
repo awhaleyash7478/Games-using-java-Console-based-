@@ -6,7 +6,7 @@ import java.util.stream.Gatherer.Integrator;
 
 public class PlayWithComp
 {
-    HashSet<Integer>duplicateChoices=new HashSet<>();
+    // HashSet<Integer>duplicateChoices=new HashSet<>();
   
       ArrayList <Integer>storedUserChoices=new ArrayList<>();
         HashSet<Integer>storedChoices=new HashSet<>();
@@ -25,164 +25,465 @@ public class PlayWithComp
     String userName=null;
      String value=null;
 
-    public int compResponse()//ArrayList<Integer> storedUserChoices)
+    public void compResponse()//ArrayList<Integer> storedUserChoices)
     {
         
+        
 
-        int horizontalCount=3;
-    //  ArrayList <Integer>storedUserChoices=new ArrayList<>();
-    //    storedUserChoices.add(3);
-    //    storedUserChoices.add(4);
-      // System.out.println(storedUserChoices);       
-    int previousCount=0;
+//         int horizontalCount=3;
+//   ArrayList <Integer>storedUserChoices=new ArrayList<>();
+//     //    storedUserChoices.add(3);
+//     //    storedUserChoices.add(4);
+//       // System.out.println(storedUserChoices);       
+//     int previousCount=0;
    
-    //int max=(int)Collections.max(storedUserChoices);
-    //System.out.println("max: "+max);
-int count=3;
-int totalHorizontalSum=6;
-int sum=0;
-int flag=1;
-//System.out.println(storedUserChoices);
+//     //int max=(int)Collections.max(storedUserChoices);
+//     //System.out.println("max: "+max);
+// int count=3;
+// int totalHorizontalSum=6;
+// int sum=0;
+// int flag=0;
+// //System.out.println(storedUserChoices);
 
-int result=0;
-// if(storedUserChoices.contains(1)||storedUserChoices.contains(2)||storedUserChoices.contains(3))
-// {
-//     for(int choices:storedUserChoices)
-//     {
+// int result=0;
+// // if(storedUserChoices.contains(1)||storedUserChoices.contains(2)||storedUserChoices.contains(3))
+// // {
+// //     for(int choices:storedUserChoices)
+// //     {
      
-//         storedSums.add(choices);
+// //         storedSums.add(choices);
         
-//     }
-//     int first=storedSums.get(0);
-//     int second=storedSums.get(1);
-//     sum=first+second;
-//     System.out.println("sum:"+sum);
-//      result=6-sum;
-//     System.out.println("result: "+result);
+// //     }
+// //     int first=storedSums.get(0);
+// //     int second=storedSums.get(1);
+// //     sum=first+second;
+// //     System.out.println("sum:"+sum);
+// //      result=6-sum;
+// //     System.out.println("result: "+result);
 
     
-// }
-
-for(int i=1;i<=3;i++)
-{
-    System.out.println("previous count: "+previousCount);
-   System.out.println("i: "+i+" "+"count: "+count+"  sum:"+totalHorizontalSum);
-    if(!storedUserChoices.isEmpty())
-    {
-        Collections.sort(storedUserChoices);
-      System.out.println("sorted list: "+storedUserChoices);
-        for(int ch:storedUserChoices)
-        {
-           System.out.println("ch: "+ch);
-
-           
-            if(ch<=count && ch>=previousCount )
-            {
-                 if(duplicateChoices.contains(ch))
-                 {
-                    System.out.println("dupicate|: "+duplicateChoices);
-                    System.out.println("hey contains the duplicate hence not entered");
-                    continue;
-                 }else 
-                 {
-                    System.out.println("hey");
-                       System.out.println("stored  choices: "+storedChoices);
-                            storedChoices.add(ch);
-                              duplicateChoices.add(ch);
-   System.out.println("stored  choices: "+storedChoices);
-                 }
-                
-                   
-                //    System.out.println("stored choices: "+storedChoices);
-              
-                      
-                   
-                      
-                
-                    // }  
-
-                
-                //   System.out.println("duplicate list: "+duplicateChoices);
-              
-                // System.out.println("\n stored choices : "+storedChoices);
-
-            }else 
-            {
-               // break;
-               System.out.println("phirse");
-               continue;
-            }
+// // }
+// String alName=null;
+// ArrayList <Integer>horizontalAl1=new ArrayList<>();
+// ArrayList <Integer>horizontalAl2=new ArrayList<>();
+// ArrayList <Integer>horizontalAl3=new ArrayList<>();
 
 
-        }
-        System.out.println("final stored choices: "+storedChoices);
-        if(storedChoices.size()>=2)
-        {
+// horizontalAl1.addAll(storedUserChoices);
+// System.out.println("dummmy: "+horizontalAl1);
 
-        
-        for(int ch:storedChoices)
-        {
-            sum=sum+ch;
-
-        }
-        System.out.println("sum: "+sum);
-        result=totalHorizontalSum-sum;
-        System.out.println("eureka it is: "+result);
-        System.out.println("duplicate choices: "+duplicateChoices);
-        System.out.println("stored choices: "+storedChoices);
-        storedChoices.removeAll(duplicateChoices);
-        System.out.println("after removal: "+storedChoices);
-
-        break;
-    }else 
-    {
-        System.out.println("here");
-        previousCount=previousCount+3;
-
-        totalHorizontalSum=totalHorizontalSum+9;
-        count=count+3;
-        continue;
-    }
-
-
-    }
-    
-    
-}
-return result;
-
-    }
-
-
+// for(int i=1;i<=3;i++)
+// {
    
-
-//     public int compCombination1(ArrayList comb1,ArrayList storedUserChoices)
-
+//     // if(!storedUserChoices.isEmpty())
+//    if(!storedUserChoices.isEmpty())
 //     {
-        
-//         int choice=0;
-//         while(true)
+//         Collections.sort(storedUserChoices);
+//         System.out.println("user choices: "+storedUserChoices);
+     
+//         // for(int ch:storedUserChoices)
+//         // {
+//         for(int ch:storedUserChoices)
 //         {
-//         try 
-//         {
-//          choice=(int)comb1.get(0);
+//             System.out.println("ch:"+ch);      
+//             System.out.println("count: "+count);     
+//             if(ch<=count)
+//             {
+//                 if(horizontalAl1.size()==2)
+//                 {
+//                     flag=1;
+//                     alName="horizontalAl1";
+//                     break;
 
-       
-//         }catch(Exception e){}
-//         if(storedUserChoices.contains(choice))
+//                 }
+//                 horizontalAl1.add(ch);
+//                 System.out.println("horizontal1: "+horizontalAl1);
+//             }else if(ch>=previousCount && ch<=count)
+//             {
+//                      if(horizontalAl2.size()==2)
+//                 {
+//                     flag=2;
+                     
+//                     alName="horizontalAl2";
+//                     break;
+
+//                 }
+//                 horizontalAl2.add(ch);
+//                  System.out.println("horizontal1: "+horizontalAl2);
+                
+//             }else if(ch>=previousCount && ch<=count) 
+//             {
+//                      if(horizontalAl3.size()==2)
+//                 {
+//                     alName="horizontalAl3";
+//                     flag=3;
+//                     break;
+
+//                 }
+//                 horizontalAl3.add(ch);
+//                  System.out.println("horizontal1: "+horizontalAl3);
+
+//             }
+//             else 
+//             {
+//                // break;
+         
+//                System.out.println("going again up for i: "+i+" and count: "+count);
+//                continue;
+//             }
+//             // if(ch<=count && ch>=previousCount )
+//             // {
+//             //     //  if(duplicateChoices.contains(ch))
+//             //     //  {
+//             //     //     System.out.println("duplicate spoted: "+ch);
+                  
+//             //     //     continue;
+//             //     //  }else 
+//             //     //  {
+//             //     //     System.out.println("entered in else");
+                    
+//                             storedChoices.add(ch);
+//                             //   duplicateChoices.add(ch);
+//                 //               System.out.println("stored choices: "+storedChoices);
+   
+//                 //  }
+                
+                   
+//                 //    System.out.println("stored choices: "+storedChoices);
+              
+                      
+                   
+                      
+                
+//                     // }  
+
+                
+//                 //   System.out.println("duplicate list: "+duplicateChoices);
+              
+//                 // System.out.println("\n stored choices : "+storedChoices);
+
+            
+
+
+//         }
+    
+        
+
+// int previousch=0;
+// if(flag==1)
+// {
+    
+
+
+
+
+
+        
+//         for(int ch:)
 //         {
+            
+//             System.out.println("ch to be removed: "+ch);
+//             if(previousch==0)
+//             {
+//             previousch=ch;
+//             System.out.println("previous ch: "+previousch);
+//         continue;    
+//         }else if(ch-previousch==1)
+//         {
+//             System.out.println("minus: "+(ch-previousch));
+            
+        
+
+//             sum=sum+ch+previousch;
+//             System.out.println("sum: "+sum);
 //             try 
 //             {
-//             comb1.remove(Integer.valueOf(choice));
+//                horizontalAl1.remove(Integer.valueOf(ch));
 //             }catch(Exception e)
 //             {}
-//             continue;   
-//         }else 
+//                System.out.println("dummy after removal: "+horizontalAl1);
 
-//             {
-//                 break;
-//             }
+//         }
 //     }
+//         result=totalHorizontalSum-sum;
+     
+//         System.out.println("result:"+result);
+//         // storedChoices.removeAll(duplicateChoices);
+
+//         break;
+//     }else 
+//     {
+//         previousCount=previousCount+3;
+
+//         totalHorizontalSum=totalHorizontalSum+9;
+//         count=count+3;
+//         continue;
+//     }
+
+
+//     }
+    
+    
+// }
+// return result;
+int previousCount=0;
+int horizontalSum1=6;
+int currCount=3;
+int previousVerticalCount=1;
+int currVerticalCount=7;
+ArrayList<Integer> duplicateChoices=new ArrayList<>();
+    
+ArrayList <Integer>horizontalAl1=new ArrayList<>();
+ ArrayList <Integer>horizontalAl2=new ArrayList<>();
+ ArrayList <Integer>horizontalAl3=new ArrayList<>();
+
+ ArrayList <Integer>diagonalAl1=new ArrayList<>();
+ ArrayList <Integer>diagonalAl2=new ArrayList<>();
+ ArrayList<Integer>verticalAl1=new ArrayList<>();
+
+ 
+ 
+
+
+
+ 
+
+ ArrayList<ArrayList<Integer>>rootArrayList=new ArrayList<>();
+ rootArrayList.add(verticalAl1);
+//  rootArrayList.add(horizontalAl1);
+ 
+//  rootArrayList.add(horizontalAl2);
+//  rootArrayList.add(horizontalAl3);
+
+//  rootArrayList.add(diagonalAl1);
+//  rootArrayList.add(diagonalAl2);
+
+//   storedUserChoices.add(5);
+//    storedUserChoices.add(4);
+//    storedUserChoices.add(2);
+//    storedUserChoices.add(7);
+   storedUserChoices.add(3);
+   storedUserChoices.add(5);
+
+
+   Collections.sort(storedUserChoices);
+   System.out.println(storedUserChoices);
+   int i=1;
+   int verticalSum1=15;
+ for(ArrayList al:rootArrayList)
+ {
+    // System.out.println("entered in outer loop");
+     System.out.println("i: "+i);
+
+    for(int ch:storedUserChoices)
+    {
+        // System.out.println("ch: "+ch);
+  if(ch%2!=0)
+  {
+   
+    // if(diagonalAl1.size()==2)
+    // {
+        // System.out.println("enterd in cond");
+        //         System.out.println(diagonalAl1);
+        
+        //         System.out.println("prevch:"+prevch+" currrch: "+ch);
+        
+        //diagonal response logic
+        int diagonalAlSum=15;
+        if(diagonalAl1.size()>0)
+            {
+    int prevch=(int)diagonalAl1.get(0);
+    if(prevch*ch%5==0)
+    {
+        // diagonalAl1.add(ch);
+            int sum=prevch+ch;
+                
+                // System.out.println("diagonal sum;'"+diagonalAlSum);
+                int result=diagonalAlSum-sum;
+                System.out.println("result of diagonal: "+result);
+                return;
+
+
+    }
+}else 
+{
+     diagonalAl1.add(ch);
+
+}
+    
+
+            
+                
+    // }
+
+  }
+
+  //vertical response logic
+    //  if(ch>=previousVerticalCount && ch<=currVerticalCount)
+    //  {
+        al.add(ch);
+        System.out.println("vertical al: "+al);
+   
+   
+         if(al.size()==2)
+         {
+            if(al.contains(2)||al.contains(5))
+            {
+                verticalSum1=15;
+         
+            }else if(al.contains(3)||al.contains(6))
+            {
+                verticalSum1=18;
+
+            }
+         int  previousVerch=(int)al.get(0);
+         int currSum=previousVerch+ch;
+         int verResult=verticalSum1-currSum;
+         System.out.println("verResult: "+verResult);
+         return;
+         }
+        
+
+        // continue;
+    //  }else  
+    //  {
+
+    //     previousVerticalCount++;
+    //     currVerticalCount++;
+    //  }
+
+
+
+  System.out.println("out 4");
+  //horizontal response logic
+  if(al==horizontalAl1||al==horizontalAl2||al==horizontalAl3)
+  {
+        if(!duplicateChoices.contains(ch))
+            {
+            System.out.println("prev: "+previousCount+" curr: "+currCount);
+        if(ch>previousCount && ch<=currCount)
+        {
+           
+            if(al.size()<2 )
+            {
+                // System.out.println("BEFORE ADDING CH:"+al);
+            al.add(ch);
+            // if(ch%2!=0 && i>3)
+            // {
+            //     System.out.println("hey entered in odd condition");
+            //     al.add(ch);
+                
+            // }
+          //  System.out.println("before"+storedUserChoices);
+            duplicateChoices.add(ch);
+            System.out.println("added to dupicate"+duplicateChoices);
+            // try 
+            // {
+
+            // storedUserChoices.remove(Integer.valueOf(ch));
+            // }catch(Exception e)
+            // {}
+            // System.out.println("duplicate:"+duplicateChoices);
+            
+            // System.out.println("AFTER ADDING CH:"+al);
+            if(al.size()==2)
+            {
+            //  System.out.println("enterd in cond");
+                // System.out.println(al);
+                int prevch=(int)al.get(0);
+                // System.out.println("prevch:"+prevch+" currrch: "+ch);
+
+
+                int sum=prevch+ch;
+                // System.out.println("horizontal sum;'"+horizontalSum1);
+                int result=horizontalSum1-sum;
+                System.out.println("result: "+result);
+               return ;
+                // break;
+            }
+               
+
+            }
+            //  System.out.println("size: "+al.size());
+            System.out.println("out ");
+
+        }else  
+        {
+            // i++;
+           
+            break;
+        }
+        System.out.println("out 2");
+    }
+    System.out.println("out 3");
+}
+       
+    }
+
+ 
+
+   System.out.println("after everything1: "+horizontalAl1);
+   System.out.println("after eveything2: "+horizontalAl2);
+   System.out.println("after everything3: "+horizontalAl3);
+   System.out.println("after everything: "+diagonalAl1);
+   System.out.println("after everything: "+diagonalAl2);
+    i++;
+    previousCount= previousCount+3;
+           currCount=currCount+3;
+        horizontalSum1=   horizontalSum1+9;
+      
+   
+ }
+ 
+}
+
+
+
+
+   
+
+    public int compCombination1(ArrayList comb1,ArrayList storedUserChoices)
+
+    {
+        
+        int choice=0;
+        if(storedUserChoices.size()>=2)
+        {
+            System.out.println("hey calling compresponse");
+           
+            compResponse();
+            return choice;
+
+
+        }
+        
+        System.out.println("entered");
+        System.out.println(comb1);
+        while(true)
+        {
+        try 
+        {
+            System.out.println("choice at the entered: "+comb1.get(0));
+         choice=(int)comb1.get(0);
+
+       
+        }catch(Exception e){}
+        if(storedUserChoices.contains(choice))
+        {
+            try 
+            {
+            comb1.remove(Integer.valueOf(choice));
+            }catch(Exception e)
+            {}
+            continue;   
+        }else 
+
+            {
+                break;
+            }
+    }
+    return choice;
+}
         
        
          
@@ -190,12 +491,13 @@ return result;
       
     public void startGame()
     {
-    //     ArrayList <Integer>comb1=new ArrayList<>();
-    //     System.out.println("hey ");
+        ArrayList <Integer>comb1=new ArrayList<>();
+        System.out.println("hey ");
         
-    //          comb1.add(1);
-    //          comb1.add(7);
-    //          comb1.add(9);
+             comb1.add(1);
+             comb1.add(7);
+             comb1.add(9);
+             System.out.println(comb1);
    
          ArrayList<Integer>compChoices=new ArrayList<>();
       
@@ -277,17 +579,12 @@ return result;
             System.out.println("computer choice");
             if(firstChance==1)
             {
-                //storedUserChoices.add(1);
-                choice=compResponse();//storedUserChoices);
+
+              choice=compCombination1(comb1,storedUserChoices);
+               // choice=compResponse();
                 System.out.println("choice: "+choice);
                 compChoices.add(choice);
-               // System.out.println("org: "+comb1);
-               //  choice=compCombination1(comb1,storedUserChoices);
-                // System.out.println("choice before add: "+choice);
-                //  compChoices.add(choice);
 
-                //  System.out.println("return back");
-                //  System.out.println("choice return: "+choice);
                          
 
             }
@@ -297,10 +594,10 @@ return result;
             // System.out.println("choice: "+choice);
             try 
             {
-         //   comb1.remove(0);
+          comb1.remove(0);
             }catch(Exception e)
             {} 
-           // System.out.println("after removal: "+comb1);
+          System.out.println("after removal: "+comb1);
             counter++;
             System.out.println("continuing");
             continue;
@@ -410,7 +707,7 @@ return result;
         }
         if(choice==1)
         {
-       startGame();
+      compResponse();
         }else if(choice==2)
         {
             return ;
