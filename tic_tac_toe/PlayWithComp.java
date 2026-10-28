@@ -11,7 +11,8 @@ public class PlayWithComp
       ArrayList <Integer>storedUserChoices=new ArrayList<>();
        ArrayList<Integer>compChoices=new ArrayList<>();
         HashSet<Integer>storedChoices=new HashSet<>();
-    
+    ArrayList<Integer> duplicateAl=new ArrayList<>();
+     ArrayList <Integer>failedComb=new ArrayList<>();
 
       HashMap<String,String>h=new HashMap<>();
         int symbol1=0;
@@ -26,9 +27,11 @@ public class PlayWithComp
     }
     String userName=null;
      String value=null;
+          int counter=0;
 
     public int  compResponse()
     {
+   
         
         
 
@@ -48,6 +51,7 @@ ArrayList <Integer>horizontalAl1=new ArrayList<>();
  ArrayList <Integer>diagonalAl2=new ArrayList<>();
  ArrayList<Integer>verticalAl1=new ArrayList<>();
 
+
  
  
 
@@ -55,6 +59,7 @@ ArrayList <Integer>horizontalAl1=new ArrayList<>();
 ArrayList <Integer>commonAl=new ArrayList<>();
 commonAl.addAll(storedUserChoices);
 commonAl.addAll(compChoices);
+
  
 
  ArrayList<ArrayList<Integer>>rootArrayList=new ArrayList<>();
@@ -78,18 +83,27 @@ commonAl.addAll(compChoices);
 
    Collections.sort(commonAl);
    System.out.println("comp:"+commonAl);
+commonAl.removeAll(failedComb);
+System.out.println("hey after removing: "+commonAl);
    int i=1;
    int verticalSum1=12;
  for(ArrayList al:rootArrayList)
  {
     // System.out.println("entered in outer loop");
      System.out.println("i: "+i);
-
+// for(int remove:duplicateAl)
+// {
+//     if(commonAl.contains(remove))
+//     {
+//         commonAl.remove(Integer.valueOf(remove));
+//     }
+// }
     for(int ch:commonAl)
     {
+        System.out.println("ch: "+ch);
         if(al==diagonalAl1||al==diagonalAl2)
         {
-        // System.out.println("ch: "+ch);
+         
   if(ch%2!=0)
   {
    
@@ -140,20 +154,23 @@ commonAl.addAll(compChoices);
     
         if(al.size()>0)
         {
-            System.out.println("hey not adding");
+           
             int previousCh=(int)al.get(0);
             int verDiff=ch-previousCh;
             if(verDiff==3 || verDiff==6)
             {
                 al.add(ch);
 
+            }else 
+            {
+                 System.out.println("hey not adding");
             }
 
         }else 
         {
         al.add(ch);
         }
-        // System.out.println("vertical al: "+al);
+        System.out.println("vertical al: "+al);
    
    
          if(al.size()==2)
@@ -172,16 +189,80 @@ commonAl.addAll(compChoices);
                 verticalSum1=18;
 
             }
+          
+           
               int  previousVerch=(int)al.get(0);
          int currSum=previousVerch+ch;
+         
          result=verticalSum1-currSum;
+        //  System.out.println("al--------------: "+verticalAl1);
+      System.out.println("result-----------: "+result);
+        //  System.out.println("stored user: "+storedUserChoices);
+            
+        //  if(storedUserChoices.contains())
+        //  {
+        //     System.out.println("you got is yash");
+        //  }
+        // if(result==1||result==4||result==7||result==8)
+        // { System.out.println("result-----------: "+result);
+              System.out.println("stored user: "+verticalAl1);
+            if(commonAl.contains(result))
+            {
+                counter=0;
+                System.out.println("hey result matches the user value");
+                verticalAl1.add(result);
+            }else 
+            {
          verticalAl1.add(result);
+         System.out.println("hey here vertical al is: "+verticalAl1);
+             counter=1;
+            }
+        // }
+        if(storedUserChoices.contains(ch)&&storedUserChoices.contains(previousVerch))
+         {
+          counter=5;
+         }
+    
+     
          if(verticalAl1.size()==3)
          {
-            System.out.println(verticalAl1);
-            System.out.println("Winner Winner chicken dinner");
+        //     System.out.println("vertical:"+verticalAl1+" and user:"+storedUserChoices);
+        //  for(int choice:storedUserChoices)
+        //     {
+        //         System.out.println("choice: "+choice);
+        //     if(verticalAl1.contains(choice))
+        //     {
+     
+                
+        //         verticalAl1.remove(Integer.valueOf(choice));
+        //                    duplicateAl.add(choice);
+        //                    System.out.println("-------------: "+duplicateAl);
+               
+        //         System.out.println("saved ur ass");
+
+
+
+        //     }
+        // }
+            if( counter==1)
+            {
+        
+            System.out.println("hey here it is:"+verticalAl1);
+            // System.out.println("Winner Winner chicken dinner");
             flag=1;
-         return result;
+         return result;  
+            }else if(counter==0)
+            {
+                System.out.println("hey adding all eureka eureka:"+verticalAl1);
+                failedComb.addAll(verticalAl1);
+                counter=2;
+                break;
+            }else if(counter==5)
+            {
+                System.out.println("cry baby cry");
+                return  result;
+            }
+        
          }
         //  System.out.println("verResult: "+verResult+"and sum: "+verticalSum1);
         
@@ -270,6 +351,13 @@ commonAl.addAll(compChoices);
 }
        
     }
+    System.out.println("gd8swfuhu9");
+    if(counter==2)
+{
+    System.out.println("common: "+commonAl);
+  commonAl.removeAll(failedComb);
+    System.out.println("after removal common: "+commonAl);
+}
 
  
 
@@ -308,6 +396,7 @@ commonAl.addAll(compChoices);
         if(storedUserChoices.size()>=2 || compChoices.size()>=2)
         {
             System.out.println("hey calling compresponse");
+
            
           choice=  compResponse();
           System.out.println("eureka");
@@ -316,14 +405,16 @@ commonAl.addAll(compChoices);
 
         }
         
-        System.out.println("entered");
-        System.out.println(comb1);
+        //System.out.println("entered");
+       // System.out.println(comb1);
         while(true)
         {
         try 
         {
             System.out.println("choice at the entered: "+comb1.get(0));
+        
          choice=(int)comb1.get(0);
+        
 
        
         }catch(Exception e){}
@@ -386,11 +477,13 @@ commonAl.addAll(compChoices);
        
         while(true)
         {
-            if(compChoices.size()>=2)
-            {
-                System.out.println("--------------------");
-                compResponse();
-            }
+            // if(compChoices.size()>=2)
+            // {
+            //     System.out.println("compchoices :"+compChoices);
+            //     System.out.println("--------------------");
+            //    choice= compResponse();
+            // //    System.out.println("Choices: "+choice);
+            // }
        
         int count=1;
         // System.out.println("hey entered");
@@ -446,11 +539,11 @@ commonAl.addAll(compChoices);
 
               choice=compCombination1(comb1,storedUserChoices);
                // choice=compResponse();
-                System.out.println("Choice: "+choice);
+                // System.out.println("Choice: "+choice);
     
 
                 compChoices.add(choice);
-                System.out.println("compchoics: "+compChoices);
+                // System.out.println("compchoics: "+compChoices);
 
                          
 
@@ -464,16 +557,23 @@ commonAl.addAll(compChoices);
           comb1.remove(0);
             }catch(Exception e)
             {} 
-          System.out.println("after removal: "+comb1);
+        //   System.out.println("after removal: "+comb1);
             counter++;
-            System.out.println("continuing");
+            // System.out.println("continuing");
             continue;
             
             
         }
 
   
+            if(flag==1)
+            {
+                System.out.println("\n**********************************");
+                System.out.println("Winner Winner chicken dinner");
+                 System.out.println("**********************************");
+                 return ;
             
+            }
       
         System.out.print("\n\n"+userName+" your choice: ");
          
